@@ -1,7 +1,14 @@
 <?php include("header.html") ?>
+
+<h2 id="suggest">Kacchi Biriyani is most popular, 
+  Vote that today too?
+  <br/>
+  <a id="yesbtn" href=""> Yes </a>
+</h2>
+
+
+
 <h2> Todays Lunch Rank</h2> 
-
-
 <table border="1">
   <tr>
     <th>Rank</th>
@@ -35,7 +42,8 @@
 
 </table>
 
-
-</td>
+<br/>
+<br/>
+<br/>
 
 <?php include("footer.html") ?>

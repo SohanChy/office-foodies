@@ -10,7 +10,7 @@
 </select>
 <button> Find </button>
 
- <table border="1">
+<table border="0" cellspacing="0" cellpadding="0">
  	<tr>
 
 		 <th>Company Name</th>
