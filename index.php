@@ -1,10 +1,5 @@
 <?php
 
-  require 'libs/route.php';
+  require_once 'app/core/init.php';
 
-  $route=new route;
-
-
-
-
-?>
+  $n=new App;
