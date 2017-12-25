@@ -1,4 +1,6 @@
-<?php include("header.html") ?>
+<?php 
+include("header.html") ?>
+
 <h2> Welcome To Office Foodies </h2> 
 <h4> Food for your workplace!</h4>
 <h4> Popular Menus Today: </h4>

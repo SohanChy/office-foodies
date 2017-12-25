@@ -144,6 +144,17 @@ class App extends Controller {
 
         if(isset($_GET['url']))
         {
+
+
+            //asset handling
+            $fileExtensions = ["css","js","jpg","png"];
+            $getUrl = $_GET['url'];
+            if(substr( $getUrl, 0, 6 ) !== "assets"){
+                if( in_array(pathinfo($getUrl, PATHINFO_EXTENSION), $fileExtensions) ){
+                    header( 'Location: assets/'.$getUrl ) ;
+                }    
+            }
+
             $routList = $this->routerList();
 
             $url =explode('/', $_GET['url']);
