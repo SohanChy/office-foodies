@@ -29,13 +29,21 @@ class App extends Controller {
                 "controllerPath"=>"","controller"=>"home","method"=>"index","data"=>[]
             ),
             "registration" => array (
-                "controllerPath"=>"auth","controller"=>"registration","method"=>"index","data"=>[]
+                "controllerPath"=>"auth","controller"=>"registration","method"=>"userRegistration","data"=>[]
+            ),
+            "new_office" => array (
+                "controllerPath"=>"auth","controller"=>"registration","method"=>"officeRegistration","data"=>[]
+            ),
+            "new_vendor" => array (
+                "controllerPath"=>"auth","controller"=>"registration","method"=>"vendorRegistration","data"=>[]
             ),
 
 
 
-
-            "user/today" => array (
+            "user" => array (
+                "controllerPath"=>"user","controller"=>"userController","method"=>"showIndex","data"=>[]
+            ),
+            "user/index" => array (
                 "controllerPath"=>"user","controller"=>"userController","method"=>"index","data"=>[]
             ),
             "user/suggest" => array (
@@ -50,7 +58,9 @@ class App extends Controller {
 
 
 
-
+            "vendor" => array (
+                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"showIndex","data"=>[]
+            ),
             "vendor/index" => array (
                 "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"index","data"=>[]
             ),
@@ -69,7 +79,9 @@ class App extends Controller {
 
 
 
-
+            "superadmin" => array (
+                "controllerPath"=>"superadmin","controller"=>"superadminController","method"=>"showIndex","data"=>[]
+            ),
             "superadmin/index" => array (
                 "controllerPath"=>"superadmin","controller"=>"superadminController","method"=>"index","data"=>[]
             ),
@@ -84,7 +96,9 @@ class App extends Controller {
             ),
 
 
-
+            "admin" => array (
+                "controllerPath"=>"admin","controller"=>"adminController","method"=>"showIndex","data"=>[]
+            ),
             "admin/index" => array (
                 "controllerPath"=>"admin","controller"=>"adminController","method"=>"index","data"=>[]
             ),

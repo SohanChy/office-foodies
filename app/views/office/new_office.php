@@ -1,8 +1,8 @@
 <?php include("header.html") ?>
 
-<a href="registration.php"> Register as a user (office employee) </a> | 
-<a href="new_office.php"> Register as a office </a> | 
-<a href="new_vendor.php"> Register as a food vendor </a> | 
+<a href="registration"> Register as a user (office employee) </a> |
+<a href="new_office"> Register as a office </a> |
+<a href="new_vendor"> Register as a food vendor </a> |
 <br />
 <br />
  <form >

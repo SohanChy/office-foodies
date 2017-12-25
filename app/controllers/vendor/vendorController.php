@@ -2,6 +2,10 @@
 
 class vendorController extends Controller
 {
+    function showIndex()
+    {
+        header('Location: '.'vendor/index');
+    }
     function index()
     {
         $this->view('office/vendor/index');
