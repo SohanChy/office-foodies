@@ -2,6 +2,10 @@
 
  class adminController extends Controller
  {
+     function showIndex()
+     {
+         header('Location: '.'admin/popular');
+     }
      function index()
      {
          $this->view('office/admin/popular');
