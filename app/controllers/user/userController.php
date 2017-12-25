@@ -1,6 +1,10 @@
 <?php
 class userController extends Controller
 {
+    function showIndex()
+    {
+        header('Location: '.'user/index');
+    }
     function index()
     {
         $this->view('office/user/today');

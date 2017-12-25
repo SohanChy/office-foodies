@@ -2,6 +2,10 @@
 
 class superadminController extends Controller
 {
+    function showIndex()
+    {
+        header('Location: '.'superadmin/index');
+    }
     function index()
     {
         $this->view('office/superadmin/index');
