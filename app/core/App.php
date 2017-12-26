@@ -25,6 +25,9 @@ class App extends Controller {
             "login" => array (
                 "controllerPath"=>"auth","controller"=>"login","method"=>"index","data"=>[]
             ),
+            "logincheck" => array (
+                "controllerPath"=>"auth","controller"=>"login","method"=>"loginCheck","data"=>[]
+            ),
             "home" => array (
                 "controllerPath"=>"","controller"=>"home","method"=>"index","data"=>[]
             ),
@@ -36,6 +39,15 @@ class App extends Controller {
             ),
             "new_vendor" => array (
                 "controllerPath"=>"auth","controller"=>"registration","method"=>"vendorRegistration","data"=>[]
+            ),
+            "checkregistrationuser" => array (
+                "controllerPath"=>"auth","controller"=>"registration","method"=>"checkRegistrationUser","data"=>[]
+            ),
+            "checkregistrationvendor" => array (
+                "controllerPath"=>"auth","controller"=>"registration","method"=>"checkRegistrationVendor","data"=>[]
+            ),
+            "checkregistrationadmin" => array (
+                "controllerPath"=>"auth","controller"=>"registration","method"=>"checkRegistrationAdmin","data"=>[]
             ),
 
 

@@ -1,6 +1,7 @@
 <?php
 
-class Controller
+require_once 'app/core/validation.php';
+class Controller extends validation
 {
     public function model($model)
     {
@@ -29,4 +30,8 @@ class Controller
         else
             echo "file not found";
     }
+
+
+
+
 }
