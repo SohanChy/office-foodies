@@ -156,22 +156,24 @@ class App extends Controller {
     public function parseUrl()
     {
 
-        if(isset($_GET['url']))
+        if(isset($_REQUEST['url']))
         {
-
 
             //asset handling
             $fileExtensions = ["css","js","jpg","png"];
-            $getUrl = $_GET['url'];
-            if(substr( $getUrl, 0, 6 ) !== "assets"){
-                if( in_array(pathinfo($getUrl, PATHINFO_EXTENSION), $fileExtensions) ){
-                    header( 'Location: assets/'.$getUrl ) ;
-                }    
+            $getUrl = $_REQUEST['url'];
+
+            if( in_array(pathinfo($getUrl, PATHINFO_EXTENSION), $fileExtensions) ){
+                if(substr( $getUrl, 0, 6 ) !== "assets"){
+                    header( 'Location: '.BASE_URL.'/assets/'.$getUrl ) ;
+                    die();
+                }
             }
+
 
             $routList = $this->routerList();
 
-            $url =explode('/', $_GET['url']);
+            $url =explode('/', $_REQUEST['url']);
             $temp="";
 
             for ($i=0;$i<sizeof($url);$i++)
@@ -190,9 +192,9 @@ class App extends Controller {
 
 
         /*
-        if(isset($_GET['url']))  ///if url is not null
+        if(isset($_REQUEST['url']))  ///if url is not null
         {
-            $url =explode('/', $_GET['url']);
+            $url =explode('/', $_REQUEST['url']);
 
 
             $file='app/controllers/'.$url[0].'.php';
