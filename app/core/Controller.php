@@ -9,7 +9,7 @@ class Controller extends validation
         return new $model();
     }
 
-    public function view($view,$data=[])
+    public function view($view,$data=null)
     {
         require_once 'app/views/'.$view.'.php';
     }
