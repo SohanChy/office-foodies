@@ -24,22 +24,42 @@ where orders.delivery_status = 0;";
 
     function bids()
     {
+        $vendorId = $_SESSION['managedVendor']->getId();
 
-        $mybidinglist = array(
-            array("Datasoft", "pizza", "250", "5000", "Accepted"),
-            array("Google", "Fuska", "50", "1200", "Not Accepted"),
-            array("Facebook", "Biriyani", "180", "2500", "Other vendor won"),
-            array("Southtech", "Nachos", "58", "6000", "Accepted"),
-            array("Olivine", "Singara", "10", "50", "Accepted"),
-        );
+        $sql = "select
+  offices.name as officeName,
+  foodlist.name as foodName,
+  orders.packets as packetNum,
+  order_bid.bid_amount as bidAmount,
+  order_bid.status as status
+from order_bid
+INNER JOIN orders
+  ON orders.id = order_bid.order_id
+INNER JOIN foodlist
+  ON foodlist.id = orders.food_id
+INNER JOIN offices
+    ON offices.id = orders.office_id
+where order_bid.vendor_id={$vendorId}
+";
 
-        $this->view('office/vendor/bids', ["vendorname" => $this->vendorname, "mybidinglist" => $mybidinglist]);
+        $results = Connection::getQuery($sql);
+
+        $this->view('office/vendor/bids', [ "myBids" => $results]);
     }
 
 
     function deliveries()
     {
-        $this->view('office/vendor/deliveries', ["vendorname" => $this->vendorname]);
+        $vendorId = $_SESSION['managedVendor']->getId();
+
+        $sql = "SELECT orders.id as orderId,orders.delivery_status as orderStatus, offices.name as officeName, foodlist.name as foodName, orders.packets as packetNum
+FROM orders
+  INNER JOIN offices ON orders.office_id=offices.id
+  INNER JOIN foodlist ON orders.food_id=foodlist.id
+where orders.vendor_id = {$vendorId};";
+        $results = Connection::getQuery($sql);
+
+        $this->view('office/vendor/deliveries', ["ordersList"=>$results]);
     }
 
 
@@ -73,16 +93,34 @@ where orders.delivery_status = 0;";
 
     function makeOffer()
     {
+        $orderId = $_REQUEST['orderId'];
+        $offerAmount = $_REQUEST['offerAmount'];
 
-        $this->view('office/vendor/top_items', ["vendorname" => $this->vendorname]);
+        $bid = new Bid();
+        $bid->data["order_id"] = $orderId;
+        $bid->data["vendor_id"] = $_SESSION['managedVendor']->getId();
+        $bid->data["bid_amount"] = floatval($offerAmount);
+        $bid->data["status"] = 0;
+        $bid->save();
+
+        redirect("vendor/bids");
     }
 
 
-    function takeOrder()
+    function takeorder()
     {
-        $orderid = $_REQUEST['takeorder'];
-        echo "order id is: " . $orderid;
-        //$this->view('office/vendor/top_items',["vendorname"=>$this->vendorname]);
+        $orderId = $_REQUEST['orderId'];
+
+        $sql = "SELECT orders.id as orderId, offices.name as officeName, foodlist.name as foodName, orders.packets as packetNum
+FROM orders
+  INNER JOIN offices ON orders.office_id=offices.id
+  INNER JOIN foodlist ON orders.food_id=foodlist.id
+where orders.id = {$orderId};";
+
+        $results = Connection::getQuery($sql);
+
+
+        $this->view('office/vendor/make_offer',["orderData"=>$results[0]]);
     }
 
 }

@@ -11,6 +11,8 @@ class Order extends Model
         return "orders";
     }
 
+    public static $deliveryStatus = ["open","pending delivery","delivered"];
+
     public function food(){
         return FoodList::find($this->data["food_id"]);
     }

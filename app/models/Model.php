@@ -28,7 +28,7 @@ abstract class Model {
     }
 
    	//get all by limit 
-	public static function getAll($limit=-1){
+	public static function getAll($search=null,$column=null,$limit=-1){
 
 		$tn = static::tableName();
 		if($limit == -1){
@@ -37,6 +37,10 @@ abstract class Model {
 		else {
 			$sql = "SELECT * FROM {$tn} LIMIT {$limit}";	
 		}
+
+		if($search!=null and $column!=null){
+            $sql = $sql." where {$column} = {$search}";
+        }
 
 		return static::getCollection($sql);
 	}

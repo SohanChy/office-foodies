@@ -17,7 +17,7 @@
           echo "<td>{$order['foodName']}</td>";
           echo "<td>{$order['packetNum']}</td>";
           echo "<form action='takeorder'>
-                  <td><input type='submit' name='{$order['orderId']}'></td>
+                  <td><input type='hidden' value='{$order['orderId']}' name='orderId'> <input type='submit'></td>
                 </form>";
           echo "</tr>";
       }

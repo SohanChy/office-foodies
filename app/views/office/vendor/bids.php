@@ -11,14 +11,15 @@
  	</tr>
 
     <?php
-    foreach ($data['mybidinglist'] as $list)
+    foreach ($data['myBids'] as $bid)
     {
         echo "<tr>";
-        echo "<td><a href='#'>$list[0]</a></td>";
-        echo "<td>$list[1]</td>";
-        echo "<td>$list[2]</td>";
-        echo "<td>$list[3] taka</td>";
-        echo "<td>$list[4]</td>";
+        echo "<td><a href='#'>{$bid['officeName']}</a></td>";
+        echo "<td>{$bid['foodName']}</td>";
+        echo "<td>{$bid['packetNum']}</td>";
+        echo "<td>{$bid['bidAmount']} taka</td>";
+        $status = Bid::$status[$bid['status']];
+        echo "<td>{$status}</td>";
         //echo "<td><a href='#'>Take this order</a></td>";
         echo "</tr>";
     }

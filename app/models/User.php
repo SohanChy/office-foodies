@@ -44,11 +44,21 @@ class User extends Model
     ];
 
     public function logMeIn(){
-        $_SESSION['email'] = $this->data["email"];
-        $_SESSION['name'] = $this->data["name"];
-        $_SESSION['userid']=$this->getId();
-        $_SESSION['role']=$this->getRole();
+        $_SESSION['user'] = $this;
+        $this->roleBasedDataStore();
+
         redirect(self::$roleMap[$this->getRole()]);
+    }
+
+    private function roleBasedDataStore(){
+        if($this->getRole() == "office_manager"){
+            $managedOffice = Office::find($this->getId(),"manager_id");
+            $_SESSION['managedOffice']=$managedOffice;
+        }
+        else if($this->getRole() == "vendor_manager"){
+            $managedVendor = Vendor::find($this->getId(),"manager_id");
+            $_SESSION['managedVendor']=$managedVendor;
+        }
     }
 
     public static function registerUser($name,$email,$password,$role,$phone=null){
