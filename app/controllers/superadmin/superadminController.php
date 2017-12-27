@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class superadminController extends Controller
 {
     function showIndex()

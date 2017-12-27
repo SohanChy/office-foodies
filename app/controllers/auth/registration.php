@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class registration extends Controller
 {
     function userRegistration()
@@ -25,7 +25,7 @@ class registration extends Controller
        $username=$_REQUEST['username'];
        $password=$_REQUEST['password'];
        $confirmpassword=$_REQUEST['confirmpassword'];
-
+/*
         if(!$this->validateUserName($username))
             echo  "username";
         if(!$this->validateName($name))
@@ -35,7 +35,7 @@ class registration extends Controller
         if(!$this->validateUserName($username))
             echo  "username";
 
-
+*/
         if($this->validateName($name) && $this->validateEmail($email) && $this->validateUserName($username) && $this->validatePassword($password) && ($password==$confirmpassword) )
        {
                //save to database password will encrypted
@@ -64,7 +64,7 @@ class registration extends Controller
         $vendorname=$_REQUEST['vendorname'];
         $phone=$_REQUEST['phone'];
 
-
+/*
         if(!$this->validateUserName($username))
             echo  "username";
         if(!$this->validateName($name))
@@ -76,7 +76,7 @@ class registration extends Controller
         if(!$this->validateUserName($vendorname))
             echo "vendor name ".$vendorname;
         if(!$this->validatePhone($phone))
-            echo "phone";
+            echo "phone";*/
 
         if($this->validateName($name) && $this->validateEmail($email) && $this->validateUserName($username) && $this->validatePassword($password) && $this->validatePhone($phone) && $this->validateUserName($vendorname) && ($password==$confirmpassword))
         {
@@ -105,7 +105,7 @@ class registration extends Controller
         $officename=$_REQUEST['officename'];
         $deliveryaddress=$_REQUEST['deliveryaddress'];
         $phone=$_REQUEST['phone'];
-
+/*
         if(!$this->validateUserName($username))
             echo  "username";
         if(!$this->validateName($name))
@@ -118,7 +118,7 @@ class registration extends Controller
             echo "office name";
         if(!$this->validatePhone($phone))
             echo "phone";
-
+*/
         if($this->validateName($name) && $this->validateEmail($email) && $this->validateUserName($username) && $this->validatePassword($password) && $this->validatePhone($phone) && $this->validateUserName($officename) && ($password==$confirmpassword))
         {
 

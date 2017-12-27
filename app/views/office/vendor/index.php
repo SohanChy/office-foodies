@@ -9,45 +9,18 @@
 		 <th>Amount</th>
 		 <th>Action</th>
  	</tr>
- 	<tr>
+    <?php
+      foreach ($data['foodorderlist'] as $list)
+      {
+          echo "<tr>";
+          echo "<td><a href='#'>$list[0]</a></td>";
+          echo "<td>$list[1]</td>";
+          echo "<td>$list[2]</td>";
+          echo "<td><a href='#'>Take this order</a></td>";
+          echo "</tr>";
+      }
+    ?>
 
-		 <td><a href="#">DataSoft</a></td>
-		 <td>Kacchi Biriyani</td>
-		 <td>250 Packets</td>
-		 <td> <a href="make_offer.php">Take this order</a> </td>
-
- 	</tr>
-	 <tr>
-
-	 <td><a href="#">DataSoft</a></td>
-	 <td>Kacchi Biriyani</td>
-	 <td>250 Packets</td>
-
-	 <td> <a href="make_offer.php">Take this order</a> </td>
-	 </tr>
-	 <tr>
-
-	 <td><a href="#">DataSoft</a></td>
-	 <td>Kacchi Biriyani</td>
-	 <td>250 Packets</td>
-
-	 <td> <a href="make_offer.php">Take this order</a> </td>
-	 </tr>
-	 <tr>
-
-	 <td><a href="#">DataSoft</a></td>
-	 <td>Kacchi Biriyani</td>
-	 <td>250 Packets</td>
-
-	 <td> <a href="make_offer.php">Take this order</a> </td>
-	 </tr>
-	 <tr>
-
-	 <td><a href="#">DataSoft</a></td>
-	 <td>Kacchi Biriyani</td>
-	 <td>250 Packets</td>
-	 <td> <a href="make_offer.php">Take this order</a> </td>
- 	</tr>
 
  	
  </table>

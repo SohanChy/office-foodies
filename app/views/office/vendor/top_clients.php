@@ -9,26 +9,21 @@
 		 <th>Item</th>
 		 <th>Orders</th>
  	</tr>
- 	<tr>
-		 <td><a href="#">DataSoft</a></td>
-		 <td>Kacchi Biriyani</td>
-		 <td>5 Orders</td>
-	 </tr>
-	 <tr>
-		 <td><a href="#">Sata TEch</a></td>
-		 <td>Rice Chicken Meal</td>
-		 <td>3 Orders</td>
-	 </tr>
-	 <tr>
-		 <td><a href="#">Tata Soft</a></td>
-		 <td>Kacchi Biriyani</td>
-		 <td>2 Orders</td>
-	 </tr>
-	 <tr>
-		 <td><a href="#">Eng plus</a></td>
-		 <td>Khichuri</td>
-		 <td>2 Orders</td>
- 	</tr>
+
+    <?php
+    foreach ($data['mytopclient'] as $list)
+    {
+        echo "<tr>";
+        echo "<td><a href='#'>$list[0]</a></td>";
+        echo "<td>$list[1]</td>";
+        echo "<td>$list[2] orders</td>";
+
+        //echo "<td><a href='#'>Take this order</a></td>";
+        echo "</tr>";
+    }
+    ?>
+
+
 
 
  	

@@ -1,11 +1,14 @@
 <?php include("header.html") ?>
 
 <h1> Make offer for item </h1>
-<h3>Item : Kacchi Biriyani </h3>
-<h3>Office : <a href="">Rahim Tech</a> </h3>
-<h3>Make Offer of Price : <input /></h3>
-<input type="submit"/>
 
 
+<h3>Item : <?=$data['item']?> </h3>
+<h3>Office : <a href=""><?=$data['officename']?></a> </h3>
+
+<form action="makeoffer">
+    <h3>Make Offer of Price : <input type="text" name="offeredmoney"/></h3>
+    <input type="submit"/>
+</form>
 
 <?php include("footer.html") ?>

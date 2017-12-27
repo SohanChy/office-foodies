@@ -1,18 +1,20 @@
 <?php include("header.html") ?>
 
-<fieldset>
 
-	<fieldset>
- 	<label>Name: </label>
- 	XXA ASA<br />
-	 <label>Email: </label>
-	 a@b.com<br />
- 	<label>User Name: </label>
- 	assdas<br />
+    <fieldset>
 
-	 <label>Phone: </label>2323232323<br />
+        <fieldset>
+        <label>Name: </label>
+            <?=$data['name']?><br />
+         <label>Email: </label>
+            <?=$data['email']?><br />
+        <label>User Name: </label>
+            <?=$data['username']?><br />
 
-	 <button>Edit</button>
-</fieldset>
+         <label>Phone: </label><?=$data['phone']?><br />
+
+         <a href="editprofile"><button>edit</button></a>
+    </fieldset>
+
 
 <?php include("footer.html") ?>

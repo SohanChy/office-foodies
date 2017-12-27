@@ -9,53 +9,21 @@
 		 <th>Bid Amount</th>
 		 <th>Status</th>
  	</tr>
- 	<tr>
 
-		 <td><a href="#">DataSoft</a></td>
-		 <td>Kacchi Biriyani</td>
-		 <td>250 Packets</td>
-		 <td>5000 TK</td>
-		 <td> Not Accepted </td>
+    <?php
+    foreach ($data['mybidinglist'] as $list)
+    {
+        echo "<tr>";
+        echo "<td><a href='#'>$list[0]</a></td>";
+        echo "<td>$list[1]</td>";
+        echo "<td>$list[2]</td>";
+        echo "<td>$list[3] taka</td>";
+        echo "<td>$list[4]</td>";
+        //echo "<td><a href='#'>Take this order</a></td>";
+        echo "</tr>";
+    }
+    ?>
 
- 	</tr>
-	 <tr>
-
-	 <td><a href="#">DataSoft</a></td>
-	 <td>Kacchi Biriyani</td>
-	 <td>250 Packets</td>
-	 <td>5000 TK</td>
-	 <td> Other Vendor Won </td>
-
-	 
-	 </tr>
-	 <tr>
-
-	 <td><a href="#">DataSoft</a></td>
-	 <td>Kacchi Biriyani</td>
-	 <td>250 Packets</td>
-	 <td>5000 TK</td>
-	 <td> Not Accepted </td>
-
-	 
-	 </tr>
-	 <tr>
-
-	 <td><a href="#">DataSoft</a></td>
-	 <td>Kacchi Biriyani</td>
-	 <td>250 Packets</td>
-	 <td>5000 TK</td>
-     <td> Other Vendor Won </td>
-	 
-	 </tr>
-	 <tr>
-
-	 <td><a href="#">DataSoft</a></td>
-	 <td>Kacchi Biriyani</td>
-	 <td>250 Packets</td>
-	 <td>5000 TK</td>
-	 <td> Not Accepted </td>
-	 
- 	</tr>
 
  	
  </table>

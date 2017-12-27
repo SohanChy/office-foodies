@@ -34,4 +34,23 @@ class Controller extends validation
 
 
 
+    public function authRoute()
+    {
+        /*
+        if($this->role()=='employee')
+            header('Location: '.'user');
+        elseif ($this->role()=='admin')
+            header('Location: '.'admin');
+        elseif ($this->role()=='superadmin')
+            header('Location: '.'superadmin');
+        elseif ($this->role()=='vendor')
+            header('Location: '.'vendor');
+        else
+            header('Location: '.'login');
+        */
+    }
+
+
+
+
 }

@@ -8,33 +8,19 @@
 		 <th>Orders</th>
 		 <th>You sell at</th>
  	</tr>
- 	<tr>
-		 <td>Kacchi Biriyani</td>
-		 <td>5 Orders</td>
-		 <td>3% cheaper</td>
-	 </tr>
-	 <tr>
-		 <td>Rice Chicken Meal</td>
-		 <td>3 Orders</td>
-		 <td>5% cheaper</td>
-	 </tr>
 
-	 <tr>
-		 <td>Khi ai</td>
-		 <td>1 Orders</td>
-		 <td>2% more cost</td>
- 	</tr>
-	 <tr>
-		 <td>Riccken Meal</td>
-		 <td>1 Orders</td>
-		 <td>2% more cost</td>
-	 </tr>
+    <?php
+    foreach ($data['mytopitems'] as $list)
+    {
+        echo "<tr>";
+        echo "<td>$list[0]</td>";
+        echo "<td>$list[1]</td>";
+        echo "<td>$list[2]</td>";
 
-	 <tr>
-		 <td>Khi churi</td>
-		 <td>1 Orders</td>
-		 <td>2% more cost</td>
- 	</tr>
+        //echo "<td><a href='#'>Take this order</a></td>";
+        echo "</tr>";
+    }
+    ?>
 
 
  	

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class show extends Controller {
     function __construct()
     {

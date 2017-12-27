@@ -1,6 +1,6 @@
 <?php
 
-
+session_start();
 require_once(BASE_PATH . "/app/models/User.php");
 
 class home extends Controller {
