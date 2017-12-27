@@ -3,8 +3,8 @@
 require_once("Connection.php");
 
 abstract class Model {	
-	public $id=null,$data=null;
-	private $new;
+	public $data=null;
+	private $id=null,$new;
 
 	function __construct($row = null) {
 		if($row){
@@ -18,10 +18,14 @@ abstract class Model {
     //return "tablename";
     public static abstract function tableName(); 
 
-	public function setId($id) {
+	private function setId($id) {
 		$this->id = $id;
 		$this->new = false;	
-   }
+    }
+
+    public function getId() {
+        return $this->id;
+    }
 
    	//get all by limit 
 	public static function getAll($limit=-1){

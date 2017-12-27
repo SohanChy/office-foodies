@@ -1,12 +1,25 @@
 <?php
 
 require_once("Model.php");
+require_once("Office.php");
 
 class User extends Model
 {
     public static function tableName(){
         return "users";
-    }    
+    }
+
+    public static $roleList = [
+        "user","office_manager","vendor_manager","superadmin"
+    ];
+
+    public function getRole(){
+        return $this->data["role"];
+    }
+
+    public function office(){
+        return Office::find($this->data["office_id"]);
+    }
 
         //Create Example
         // $user = new User();
