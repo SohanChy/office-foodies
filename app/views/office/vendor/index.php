@@ -10,14 +10,14 @@
 		 <th>Action</th>
  	</tr>
     <?php
-      foreach ($data['foodorderlist'] as $list)
+      foreach ($data['orderList'] as $order)
       {
           echo "<tr>";
-          echo "<td><a href='#'>$list[0]</a></td>";
-          echo "<td>$list[1]</td>";
-          echo "<td>$list[2]</td>";
+          echo "<td><a href='#'>{$order['officeName']}</a></td>";
+          echo "<td>{$order['foodName']}</td>";
+          echo "<td>{$order['packetNum']}</td>";
           echo "<form action='takeorder'>
-                  <td><input type='submit' name='$list[3]'></td>
+                  <td><input type='submit' name='{$order['orderId']}'></td>
                 </form>";
           echo "</tr>";
       }

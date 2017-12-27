@@ -90,18 +90,6 @@ abstract class Model {
 		}
 	}
 
-	public static function getQuery($sql){
-        $conn = new Connection();
-        $results = $conn->getConnection()->query($sql);
-
-        if ($results->num_rows > 0) {
-            return $results->fetch_assoc();
-        } else {
-            return null;
-        }
-    }
-
-
 	public function save(){
 
 		$C = new Connection();

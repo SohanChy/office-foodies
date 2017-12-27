@@ -24,6 +24,17 @@ class Connection{
 		return $this->conn;
 	}
 
+    public static function getQuery($sql){
+        $conn = new Connection();
+        $results = $conn->getConnection()->query($sql);
+
+        if ($results->num_rows > 0) {
+            return $results->fetch_all(MYSQLI_ASSOC);
+        } else {
+            return null;
+        }
+    }
+
 	public function close(){
 		$this->conn->close();
 	}
