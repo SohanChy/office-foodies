@@ -8,12 +8,11 @@
 
  <form action="checkregistrationuser">
 
+     <?=showError()?>
  	<label>Name</label>
  	<input type="text" name="name"><br><br>
  	<label>Email</label>
  	<input type="text" name="email"><br><br>
- 	<label>User Name</label>
- 	<input type="Text" name="username"><br><br>
  	<label>password</label>
  	<input type="password" name="password"><br><br>
  	<label>Confirm Password</label>

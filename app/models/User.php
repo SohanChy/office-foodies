@@ -1,7 +1,7 @@
 <?php
 
-require_once("Model.php");
-require_once("Office.php");
+//require_once("Model.php");
+//require_once("Office.php");
 
 class User extends Model
 {
@@ -12,6 +12,7 @@ class User extends Model
     public static $roleList = [
         "user","office_manager","vendor_manager","superadmin"
     ];
+
 
 
 //    PHP >= 5.5
@@ -33,6 +34,31 @@ class User extends Model
 
     public function office(){
         return Office::find($this->data["office_id"]);
+    }
+
+    public static $roleMap = [
+        "user" => "user",
+        "office_manager"=>"admin",
+        "vendor_manager"=>"vendor",
+        "superadmin"=>"superadmin"
+    ];
+
+    public function logMeIn(){
+        $_SESSION['email'] = $this->data["email"];
+        $_SESSION['userid']=$this->getId();
+        $_SESSION['role']=$this->getRole();
+        redirect(self::$roleMap[$this->getRole()]);
+    }
+
+    public static function registerUser($name,$email,$password,$phone=null){
+         $user = new User();
+         $user->data["name"] = $name;
+         $user->data["email"] = $email;
+         $user->setPassword($password);
+         $user->data["phone"] = $phone;
+         $user->save();
+
+         return $user;
     }
 
         //Create Example

@@ -69,7 +69,23 @@ document.querySelector('body > table > tbody > tr:nth-child(1)').style.backgroun
 document.querySelector('body > table > tbody > tr:nth-child(1)').style.color = "#ecf0f1";
 
 
-document.getElementById('suggest').style.backgroundColor ="#27ae60";
-document.getElementById('suggest').style.color ="white";
-document.getElementById('yesbtn').style.color ="white";
+var elem = document.getElementById('suggest');
+if(elem){
+    elem.style.backgroundColor ="#27ae60";
+    elem.style.color ="white";
+
+}
+
+elem = document.getElementById('yesbtn');
+if(elem){
+    elem.style.color ="white";
+}
+
+elem = document.getElementById('errorMsg');
+if(elem){
+    elem.style.backgroundColor ="#F2DEDE";
+    elem.style.padding ="10px";
+}
+
+
 

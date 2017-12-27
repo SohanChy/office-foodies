@@ -1,13 +1,11 @@
 <?php
-  define( "BASE_PATH", getcwd() );
-  define( "BASE_URL", "http://localhost/office-foodies");
+define( "BASE_PATH", getcwd() );
+define( "BASE_URL", "http://localhost/office-foodies");
 
-//Helper function for dumping data, move to some global "helpers file"
-  function dd($data){
-    die(highlight_string("<?php\n\$data =\n" . var_export($data, true) . ";\n?>"));
-  }
+spl_autoload_register(function ($class_name) {
+    require_once "app/models/".$class_name . '.php';
+});
 
-
-  require_once 'app/core/init.php';
-
-  $n=new App;
+require_once 'helpers.php';
+require_once 'app/core/init.php';
+$n=new App;

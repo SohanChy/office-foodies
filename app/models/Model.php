@@ -1,6 +1,6 @@
 <?php
 
-require_once("Connection.php");
+//require_once("Connection.php");
 
 abstract class Model {	
 	public $data=null;
@@ -42,25 +42,30 @@ abstract class Model {
 	}
 
 	//find and return a single object by id 
-	public static function find($id){
+	public static function find($id,$column="id"){
 
 		$tn = static::tableName();
 		
-		$sql = "SELECT * FROM {$tn} where id = {$id}";
-		
-		return static::getSingle($sql);
+		$sql = "SELECT * FROM {$tn} where {$column} = '{$id}'";
+
+		$result = static::getSingle($sql);
+		if($result){
+		    return $result;
+        }
+        else return false;
 	}
 
 	public static function getSingle($sql){
 		$conn = new Connection();
-		$result = $conn->getConnection()->query($sql);
 
-		if ($result->num_rows == 1) {
+        $result = $conn->getConnection()->query($sql);
+
+        if ($result->num_rows == 1) {
 		    $row = $result->fetch_assoc();
 		    return new static($row);
 		} else {
-			$emptyArr["error"] = "0 or invalid number of results";
-		    return $emptyArr;
+//			$emptyArr["error"] = "0 or invalid number of results";
+		    return null;
 		}
 	}
 
@@ -122,7 +127,7 @@ abstract class Model {
 			}
 			$str = rtrim($str,',');
 
-			$sql = "UPDATE {$tn} set {$str} where id={$this->id}";
+			$sql = "UPDATE {$tn} set {$str} where id='{$this->id}'";
 			return $conn->query($sql);
 		}
 	}
@@ -136,7 +141,7 @@ abstract class Model {
 		$tn = static::tableName();
 
 		if($this->new != true){
-			$sql = "DELETE FROM {$tn} WHERE id = {$this->id}";
+			$sql = "DELETE FROM {$tn} WHERE id = '{$this->id}'";
 
 			return $conn->query($sql);
 		}

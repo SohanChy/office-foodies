@@ -4,39 +4,33 @@ class login extends Controller
 {
     function index()
     {
-       // echo 'Current PHP version: ' . phpversion();
+        // echo 'Current PHP version: ' . phpversion();
         $this->view('office/login');
     }
 
+
     function loginCheck()
     {
-        $username=$_REQUEST['username'];
+        $email=$_REQUEST['email'];
         $password=$_REQUEST['password'];
 
+        /** @var User $user */
+        $user = User::find($email,"email");
 
-
-        if($username=='habib' && password_hash($password)==password_hash('habib6093'))
-        //if($this.checklogin($username,$password))
-        {
-
-
-            if (!isset($_SESSION['username'])) {
-                $_SESSION['username'] = $username;
-                //$_SESSION['userid']=$this->getUserId(parameter);
-                //$_SESSION['role']=$this->getUserRole(parameter);
+        if($user){
+            if($user->verifyPassword($password)){
+                $user->logMeIn();
             }
-
-           // $this->authRoute();
-
-            header('Location: '.'vendor');
-
-
+            else
+            {
+                $_SESSION['error'] = "Wrong Password";
+            }
         }
-        else
-        {
-            echo "password doesn't match";
-            $this->index();
+        else {
+            $_SESSION['error'] = "User Not Found";
         }
+
+        $this->index();
     }
 
 

@@ -1,9 +1,9 @@
 <?php
 
-require_once("Model.php");
-require_once("Office.php");
-require_once("FoodList.php");
-require_once("User.php");
+//require_once("Model.php");
+//require_once("Office.php");
+//require_once("FoodList.php");
+//require_once("User.php");
 
 class LunchRank extends Model
 {

@@ -1,7 +1,7 @@
 <?php
 
-require_once("Model.php");
-require_once("User.php");
+//require_once("Model.php");
+//require_once("User.php");
 
 class Vendor extends Model
 {
