@@ -150,6 +150,13 @@ class validation
 
         }
 
+        if($result){
+            if(User::find($email,"email")){
+                $result = false;
+            }
+        }
+
+
         return $result;
 
     }

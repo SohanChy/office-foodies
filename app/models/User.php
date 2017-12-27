@@ -50,10 +50,11 @@ class User extends Model
         redirect(self::$roleMap[$this->getRole()]);
     }
 
-    public static function registerUser($name,$email,$password,$phone=null){
+    public static function registerUser($name,$email,$password,$role,$phone=null){
          $user = new User();
          $user->data["name"] = $name;
          $user->data["email"] = $email;
+         $user->data["role"] = $role;
          $user->setPassword($password);
          $user->data["phone"] = $phone;
          $user->save();

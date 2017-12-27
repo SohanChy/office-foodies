@@ -43,8 +43,9 @@ class registration extends Controller
         }
 
         if (count($errors) == 0) {
-            User::registerUser($name,$email,$password);
+            $user = User::registerUser($name,$email,"user",$password);
             //save to database password will encrypted
+            $user->logMeIn();
 
         } else {
             $_SESSION["error"] = implode("\n",$errors);
@@ -74,7 +75,7 @@ class registration extends Controller
         if(!$this->validatePhone($phone)){
             $errors[] = "Invalid Phone<br>";
         }
-        if(!$this->validateUserName($vendorname)){
+        if(!$this->validateName($vendorname)){
             $errors[] = "Invalid Vendor Name<br>";
         }
         if($password != $confirmpassword){
@@ -83,7 +84,7 @@ class registration extends Controller
 
         if (count($errors) == 0) {
 
-            $user = User::registerUser($name,$email,$password,$phone);
+            $user = User::registerUser($name,$email,$password,"vendor_manager",$phone);
 
             $vendor = new Vendor();
             $vendor->data["name"] = $vendorname;
@@ -122,7 +123,7 @@ class registration extends Controller
         if(!$this->validatePhone($phone)){
             $errors[] = "Invalid Phone<br>";
         }
-        if(!$this->validateUserName($officename)){
+        if(!$this->validateName($officename)){
             $errors[] = "Invalid Office Name<br>";
         }
 
@@ -132,7 +133,7 @@ class registration extends Controller
 
         if (count($errors) == 0) {
 
-            $user = User::registerUser($name,$email,$password,$phone);
+            $user = User::registerUser($name,$email,$password,"office_manager",$phone);
 
             $office = new Office();
             $office->data["name"] = $officename;

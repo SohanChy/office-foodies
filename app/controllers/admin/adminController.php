@@ -18,7 +18,7 @@ session_start();
 
      function popular()
      {
-         $popular
+//         $popular
          $this->view('office/admin/popular');
      }
 
