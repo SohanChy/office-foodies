@@ -169,26 +169,29 @@ class App extends Controller {
                     die();
                 }
             }
+            else {
+                $routList = $this->routerList();
 
+                $url =explode('/', $_REQUEST['url']);
+                $temp="";
 
-            $routList = $this->routerList();
-
-            $url =explode('/', $_REQUEST['url']);
-            $temp="";
-
-            for ($i=0;$i<sizeof($url);$i++)
-            {
-                $temp=$temp.$url[$i];
-                if(isset($routList[$temp]))
+                for ($i=0;$i<sizeof($url);$i++)
                 {
-                    $this->controller=$temp;
+                    $temp=$temp.$url[$i];
+                    if(isset($routList[$temp]))
+                    {
+                        $this->controller=$temp;
+                    }
+                    $temp=$temp.'/';
+                    //echo "this is: ".$temp."   ".$url[$i]."<br>";
                 }
-                $temp=$temp.'/';
-                //echo "this is: ".$temp."   ".$url[$i]."<br>";
+
             }
+
+//            dd($this->controller);
+            return $this->controller;
         }
 
-        return $this->controller;
 
 
         /*
