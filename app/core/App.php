@@ -2,147 +2,140 @@
 require_once 'app/core/Controller.php';
 
 
-class App extends Controller {
+class App extends Controller
+{
 
     protected $controller = 'home';
     protected $method;
-    protected $parameter ='';
+    protected $parameter = '';
 
 
-    function __construct()
-    {
-        $url=$this->parseUrl();
+    function __construct(){
+        $url = $this->parseUrl();
 
         $this->routes($url);
 
     }
 
 
-
-    public function routerList()
-    {
+    public function routerList(){
         $routeList = array(
-            "login" => array (
-                "controllerPath"=>"auth","controller"=>"login","method"=>"index","data"=>[]
+            "login" => array(
+                "controllerPath" => "auth", "controller" => "login", "method" => "index", "data" => []
             ),
-            "logincheck" => array (
-                "controllerPath"=>"auth","controller"=>"login","method"=>"loginCheck","data"=>[]
+            "logincheck" => array(
+                "controllerPath" => "auth", "controller" => "login", "method" => "loginCheck", "data" => []
             ),
-            "home" => array (
-                "controllerPath"=>"","controller"=>"home","method"=>"index","data"=>[]
+            "home" => array(
+                "controllerPath" => "", "controller" => "home", "method" => "index", "data" => []
             ),
-            "registration" => array (
-                "controllerPath"=>"auth","controller"=>"registration","method"=>"userRegistration","data"=>[]
+            "registration" => array(
+                "controllerPath" => "auth", "controller" => "registration", "method" => "userRegistration", "data" => []
             ),
-            "new_office" => array (
-                "controllerPath"=>"auth","controller"=>"registration","method"=>"officeRegistration","data"=>[]
+            "new_office" => array(
+                "controllerPath" => "auth", "controller" => "registration", "method" => "officeRegistration", "data" => []
             ),
-            "new_vendor" => array (
-                "controllerPath"=>"auth","controller"=>"registration","method"=>"vendorRegistration","data"=>[]
+            "new_vendor" => array(
+                "controllerPath" => "auth", "controller" => "registration", "method" => "vendorRegistration", "data" => []
             ),
-            "checkregistrationuser" => array (
-                "controllerPath"=>"auth","controller"=>"registration","method"=>"checkRegistrationUser","data"=>[]
+            "checkregistrationuser" => array(
+                "controllerPath" => "auth", "controller" => "registration", "method" => "checkRegistrationUser", "data" => []
             ),
-            "checkregistrationvendor" => array (
-                "controllerPath"=>"auth","controller"=>"registration","method"=>"checkRegistrationVendor","data"=>[]
+            "checkregistrationvendor" => array(
+                "controllerPath" => "auth", "controller" => "registration", "method" => "checkRegistrationVendor", "data" => []
             ),
-            "checkregistrationadmin" => array (
-                "controllerPath"=>"auth","controller"=>"registration","method"=>"checkRegistrationAdmin","data"=>[]
-            ),
-
-
-
-            "user" => array (
-                "controllerPath"=>"user","controller"=>"userController","method"=>"showIndex","data"=>[]
-            ),
-            "user/index" => array (
-                "controllerPath"=>"user","controller"=>"userController","method"=>"index","data"=>[]
-            ),
-            "user/suggest" => array (
-                "controllerPath"=>"user","controller"=>"userController","method"=>"suggest","data"=>[]
-            ),
-            "user/profile" => array (
-                "controllerPath"=>"user","controller"=>"profileController","method"=>"index","data"=>[]
-            ),
-            "user/popular" => array (
-                "controllerPath"=>"user","controller"=>"userController","method"=>"popular","data"=>[]
+            "checkregistrationadmin" => array(
+                "controllerPath" => "auth", "controller" => "registration", "method" => "checkRegistrationAdmin", "data" => []
             ),
 
 
-
-            "vendor" => array (
-                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"showIndex","data"=>[]
+            "user" => array(
+                "controllerPath" => "user", "controller" => "userController", "method" => "showIndex", "data" => []
             ),
-            "vendor/index" => array (
-                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"index","data"=>[]
+            "user/index" => array(
+                "controllerPath" => "user", "controller" => "userController", "method" => "index", "data" => []
             ),
-            "vendor/bids" => array (
-                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"bids","data"=>[]
+            "user/suggest" => array(
+                "controllerPath" => "user", "controller" => "userController", "method" => "suggest", "data" => []
             ),
-            "vendor/deliveries" => array (
-                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"deliveries","data"=>[]
+            "user/profile" => array(
+                "controllerPath" => "user", "controller" => "profileController", "method" => "index", "data" => []
             ),
-            "vendor/top_clients" => array (
-                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"top_clients","data"=>[]
-            ),
-            "vendor/top_items" => array (
-                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"top_items","data"=>[]
+            "user/popular" => array(
+                "controllerPath" => "user", "controller" => "userController", "method" => "popular", "data" => []
             ),
 
 
-
-            "superadmin" => array (
-                "controllerPath"=>"superadmin","controller"=>"superadminController","method"=>"showIndex","data"=>[]
+            "vendor" => array(
+                "controllerPath" => "vendor", "controller" => "vendorController", "method" => "showIndex", "data" => []
             ),
-            "superadmin/index" => array (
-                "controllerPath"=>"superadmin","controller"=>"superadminController","method"=>"index","data"=>[]
+            "vendor/index" => array(
+                "controllerPath" => "vendor", "controller" => "vendorController", "method" => "index", "data" => []
             ),
-            "superadmin/office_list" => array (
-                "controllerPath"=>"superadmin","controller"=>"superadminController","method"=>"office_list","data"=>[]
+            "vendor/bids" => array(
+                "controllerPath" => "vendor", "controller" => "vendorController", "method" => "bids", "data" => []
             ),
-            "superadmin/transaction_history" => array (
-                "controllerPath"=>"superadmin","controller"=>"superadminController","method"=>"transaction_history","data"=>[]
+            "vendor/deliveries" => array(
+                "controllerPath" => "vendor", "controller" => "vendorController", "method" => "deliveries", "data" => []
             ),
-            "superadmin/vendor_list" => array (
-                "controllerPath"=>"superadmin","controller"=>"superadminController","method"=>"vendor_list","data"=>[]
+            "vendor/top_clients" => array(
+                "controllerPath" => "vendor", "controller" => "vendorController", "method" => "top_clients", "data" => []
             ),
-
-
-            "admin" => array (
-                "controllerPath"=>"admin","controller"=>"adminController","method"=>"showIndex","data"=>[]
-            ),
-            "admin/index" => array (
-                "controllerPath"=>"admin","controller"=>"adminController","method"=>"index","data"=>[]
-            ),
-            "admin/order" => array (
-                "controllerPath"=>"admin","controller"=>"adminController","method"=>"order","data"=>[]
-            ),
-            "admin/popular" => array (
-                "controllerPath"=>"admin","controller"=>"adminController","method"=>"popular","data"=>[]
-            ),
-            "admin/add_user_office" => array (
-                "controllerPath"=>"admin","controller"=>"adminController","method"=>"add_user_office","data"=>[]
-            ),
-            "admin/admin" => array (
-                "controllerPath"=>"admin","controller"=>"adminController","method"=>"admin","data"=>[]
-            ),
-            "admin/bids" => array (
-                "controllerPath"=>"admin","controller"=>"adminController","method"=>"bids","data"=>[]
-            ),
-            "admin/change_office_logo" => array (
-                "controllerPath"=>"admin","controller"=>"adminController","method"=>"change_office_logo","data"=>[]
-            ),
-            "admin/history" => array (
-                "controllerPath"=>"admin","controller"=>"adminController","method"=>"history","data"=>[]
+            "vendor/top_items" => array(
+                "controllerPath" => "vendor", "controller" => "vendorController", "method" => "top_items", "data" => []
             ),
 
+
+            "superadmin" => array(
+                "controllerPath" => "superadmin", "controller" => "superadminController", "method" => "showIndex", "data" => []
+            ),
+            "superadmin/index" => array(
+                "controllerPath" => "superadmin", "controller" => "superadminController", "method" => "index", "data" => []
+            ),
+            "superadmin/office_list" => array(
+                "controllerPath" => "superadmin", "controller" => "superadminController", "method" => "office_list", "data" => []
+            ),
+            "superadmin/transaction_history" => array(
+                "controllerPath" => "superadmin", "controller" => "superadminController", "method" => "transaction_history", "data" => []
+            ),
+            "superadmin/vendor_list" => array(
+                "controllerPath" => "superadmin", "controller" => "superadminController", "method" => "vendor_list", "data" => []
+            ),
+
+
+            "admin" => array(
+                "controllerPath" => "admin", "controller" => "adminController", "method" => "showIndex", "data" => []
+            ),
+            "admin/index" => array(
+                "controllerPath" => "admin", "controller" => "adminController", "method" => "index", "data" => []
+            ),
+            "admin/order" => array(
+                "controllerPath" => "admin", "controller" => "adminController", "method" => "order", "data" => []
+            ),
+            "admin/popular" => array(
+                "controllerPath" => "admin", "controller" => "adminController", "method" => "popular", "data" => []
+            ),
+            "admin/add_user_office" => array(
+                "controllerPath" => "admin", "controller" => "adminController", "method" => "add_user_office", "data" => []
+            ),
+            "admin/admin" => array(
+                "controllerPath" => "admin", "controller" => "adminController", "method" => "admin", "data" => []
+            ),
+            "admin/bids" => array(
+                "controllerPath" => "admin", "controller" => "adminController", "method" => "bids", "data" => []
+            ),
+            "admin/change_office_logo" => array(
+                "controllerPath" => "admin", "controller" => "adminController", "method" => "change_office_logo", "data" => []
+            ),
+            "admin/history" => array(
+                "controllerPath" => "admin", "controller" => "adminController", "method" => "history", "data" => []
+            ),
 
 
         );
 
         return $routeList;
     }
-
 
 
     public function routes($url)
@@ -152,58 +145,48 @@ class App extends Controller {
         //if(!isset($routeList[$url]))
 
 
-        $controllerPath=$routeList[$url]['controllerPath'];
-        $controller=$routeList[$url]['controller'];
-        $method=$routeList[$url]['method'];
-        $data=$routeList[$url]['data'];
+        $controllerPath = $routeList[$url]['controllerPath'];
+        $controller = $routeList[$url]['controller'];
+        $method = $routeList[$url]['method'];
+        $data = $routeList[$url]['data'];
 
-        $this->route($controllerPath,$controller,$method,$data);
+        $this->route($controllerPath, $controller, $method, $data);
     }
 
 
+    public function parseUrl(){
 
-
-
-
-    public function parseUrl()
-    {
-
-        if(isset($_REQUEST['url']))
-        {
+        if (isset($_REQUEST['url'])) {
 
             //asset handling
-            $fileExtensions = ["css","js","jpg","png"];
+            $fileExtensions = ["css", "js", "jpg", "png"];
             $getUrl = $_REQUEST['url'];
 
-            if( in_array(pathinfo($getUrl, PATHINFO_EXTENSION), $fileExtensions) ){
-                if(substr( $getUrl, 0, 6 ) !== "assets"){
-                    header( 'Location: '.BASE_URL.'/assets/'.$getUrl ) ;
+            if (in_array(pathinfo($getUrl, PATHINFO_EXTENSION), $fileExtensions)) {
+                if (substr($getUrl, 0, 6) !== "assets") {
+                    header('Location: ' . BASE_URL . '/assets/' . $getUrl);
                     die();
                 }
-            }
-            else {
+            } else {
                 $routList = $this->routerList();
 
-                $url =explode('/', $_REQUEST['url']);
-                $temp="";
+                $url = explode('/', $_REQUEST['url']);
+                $temp = "";
 
-                for ($i=0;$i<sizeof($url);$i++)
-                {
-                    $temp=$temp.$url[$i];
-                    if(isset($routList[$temp]))
-                    {
-                        $this->controller=$temp;
+                for ($i = 0; $i < sizeof($url); $i++) {
+                    $temp = $temp . $url[$i];
+                    if (isset($routList[$temp])) {
+                        $this->controller = $temp;
                     }
-                    $temp=$temp.'/';
+                    $temp = $temp . '/';
                     //echo "this is: ".$temp."   ".$url[$i]."<br>";
                 }
 
             }
 
 //            dd($this->controller);
-            return $this->controller;
         }
-
+        return $this->controller;
 
 
         /*
