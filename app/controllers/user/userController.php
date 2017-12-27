@@ -53,13 +53,15 @@ class userController extends Controller
         $date=explode('-',$date);
         $year=$date[0];
         $month=$date[1];
- /*
-        echo $date;
+
+        //echo $date;
         echo "month is: ".$month."\n";
         echo "year is: ".$year."\n";
+        /*
+               // var_dump($_REQUEST);
+         */
 
-       // var_dump($_REQUEST);
- */
+
       //  $popularfoodlist=$this->getPopularFoodList($month,$year);
         $popularfoodlist=array(
             array("pizza",12),
@@ -78,7 +80,7 @@ class userController extends Controller
     {
 
         $mysuggestedfood=$_REQUEST['mysuggestedfood'];
-        //echo $mysuggestedfood;
+        echo $mysuggestedfood;
       /*
         if(!$this->foodExistMyOffice( $mysuggestedfood,$this->myId() ));
         {
@@ -94,8 +96,8 @@ class userController extends Controller
 
     function myVote()
     {
-        $myvotedfood=$_REQUEST['menu'];
-        ///echo $myvote;
+        $myvottedfood=$_REQUEST['menu'];
+        echo $myvottedfood;
         ///
         /*
         if(!$this->isVotted($myvottedfood))

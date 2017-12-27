@@ -117,13 +117,13 @@ class validation
             if(strpos($email,'@')===false || strpos($email,'.')===false)
             {
                 $result = false;
+
             }
             else
             {
                 $emailparts=explode('@',$email);
 
-                if (!ctype_alpha($emailparts[0]))
-                    $result = false;
+
 
                 $allowed = array(".", "-", "_","1","2","3","4","5","6","7","8","9","0");
                 if(!ctype_alnum(str_replace($allowed, '', $emailparts[0] ))) {

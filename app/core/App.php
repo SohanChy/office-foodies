@@ -49,41 +49,64 @@ class App extends Controller
             ),
 
 
-            "user" => array(
-                "controllerPath" => "user", "controller" => "userController", "method" => "showIndex", "data" => []
+            "user" => array (
+                "controllerPath"=>"user","controller"=>"userController","method"=>"showIndex","data"=>[]
             ),
-            "user/index" => array(
-                "controllerPath" => "user", "controller" => "userController", "method" => "index", "data" => []
+            "user/logout" => array (
+                "controllerPath"=>"auth","controller"=>"login","method"=>"logout","data"=>[]
             ),
-            "user/suggest" => array(
-                "controllerPath" => "user", "controller" => "userController", "method" => "suggest", "data" => []
+            "user/index" => array (
+                "controllerPath"=>"user","controller"=>"userController","method"=>"index","data"=>[]
             ),
-            "user/profile" => array(
-                "controllerPath" => "user", "controller" => "profileController", "method" => "index", "data" => []
+            "user/suggestion" => array (
+                "controllerPath"=>"user","controller"=>"userController","method"=>"suggestion","data"=>[]
             ),
-            "user/popular" => array(
-                "controllerPath" => "user", "controller" => "userController", "method" => "popular", "data" => []
+            "user/popular" => array (
+                "controllerPath"=>"user","controller"=>"userController","method"=>"popular","data"=>[]
+            ),
+            "user/myvote" => array (
+                "controllerPath"=>"user","controller"=>"userController","method"=>"myVote","data"=>[]
+            ),
+            "user/mynewsuggestion" => array (
+                "controllerPath"=>"user","controller"=>"userController","method"=>"myNewSuggestion","data"=>[]
+            ),
+            "user/profile" => array (
+                "controllerPath"=>"user","controller"=>"profileController","method"=>"index","data"=>[]
+            ),
+            "user/editprofile" => array (
+                "controllerPath"=>"user","controller"=>"profileController","method"=>"editProfile","data"=>[]
             ),
 
 
-            "vendor" => array(
-                "controllerPath" => "vendor", "controller" => "vendorController", "method" => "showIndex", "data" => []
+
+            "vendor" => array (
+                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"showIndex","data"=>[]
             ),
-            "vendor/index" => array(
-                "controllerPath" => "vendor", "controller" => "vendorController", "method" => "index", "data" => []
+            "vendor/logout" => array (
+                "controllerPath"=>"auth","controller"=>"login","method"=>"logout","data"=>[]
             ),
-            "vendor/bids" => array(
-                "controllerPath" => "vendor", "controller" => "vendorController", "method" => "bids", "data" => []
+            "vendor/index" => array (
+                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"index","data"=>[]
             ),
-            "vendor/deliveries" => array(
-                "controllerPath" => "vendor", "controller" => "vendorController", "method" => "deliveries", "data" => []
+            "vendor/bids" => array (
+                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"bids","data"=>[]
             ),
-            "vendor/top_clients" => array(
-                "controllerPath" => "vendor", "controller" => "vendorController", "method" => "top_clients", "data" => []
+            "vendor/deliveries" => array (
+                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"deliveries","data"=>[]
             ),
-            "vendor/top_items" => array(
-                "controllerPath" => "vendor", "controller" => "vendorController", "method" => "top_items", "data" => []
+            "vendor/top_clients" => array (
+                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"top_clients","data"=>[]
             ),
+            "vendor/top_items" => array (
+                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"top_items","data"=>[]
+            ),
+            "vendor/makeoffer" => array (
+                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"makeOffer","data"=>[]
+            ),
+            "vendor/takeorder" => array (
+                "controllerPath"=>"vendor","controller"=>"vendorController","method"=>"takeOrder","data"=>[]
+            ),
+
 
 
             "superadmin" => array(
@@ -117,6 +140,9 @@ class App extends Controller
             ),
             "admin/add_user_office" => array(
                 "controllerPath" => "admin", "controller" => "adminController", "method" => "add_user_office", "data" => []
+            ),
+            "admin/adduser" => array(
+                "controllerPath" => "admin", "controller" => "adminController", "method" => "addUser", "data" => []
             ),
             "admin/admin" => array(
                 "controllerPath" => "admin", "controller" => "adminController", "method" => "admin", "data" => []

@@ -20,11 +20,11 @@ class vendorController extends Controller
         //$foodorders=$this->getFoodOrders();
 
         $foodorderslist=array(
-            array("Datasoft","pizza","250"),
-            array("Google","Fuska","50"),
-            array("Facebook","Biriyani","180"),
-            array("Southtech","Nachos","58"),
-            array("Olivine","Singara","10"),
+            array("Datasoft","pizza","250",120),  //array(company name,food,amount,orderid)
+            array("Google","Fuska","50",130),
+            array("Facebook","Biriyani","180",132),
+            array("Southtech","Nachos","58",133),
+            array("Olivine","Singara","10",134),
         );
         $this->view('office/vendor/index',["vendorname"=>$this->vendorname,"foodorderlist"=>$foodorderslist]);
     }
@@ -105,8 +105,9 @@ class vendorController extends Controller
 
     function takeOrder()
     {
-
-        $this->view('office/vendor/top_items',["vendorname"=>$this->vendorname]);
+        $orderid=$_REQUEST['takeorder'];
+        echo "order id is: ".$orderid;
+        //$this->view('office/vendor/top_items',["vendorname"=>$this->vendorname]);
     }
 
 }
