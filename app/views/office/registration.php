@@ -6,10 +6,10 @@
 <br /><br />
 
 
- <form>
+ <form action="checkregistrationuser">
 
  	<label>Name</label>
- 	<input type="text" name="username"><br><br>
+ 	<input type="text" name="name"><br><br>
  	<label>Email</label>
  	<input type="text" name="email"><br><br>
  	<label>User Name</label>
@@ -17,7 +17,7 @@
  	<label>password</label>
  	<input type="password" name="password"><br><br>
  	<label>Confirm Password</label>
- 	<input type="password" name="password"><br><br>
+ 	<input type="password" name="confirmpassword"><br><br>
  	<input type="submit" value="Submit">
  </form>
 

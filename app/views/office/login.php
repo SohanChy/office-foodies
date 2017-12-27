@@ -1,5 +1,5 @@
 <?php include("header.html") ?>
- <form>
+ <form action="logincheck">
  	<label>username</label>
  	<input type="text" name="username"><br><br>
  	<label>password</label>
