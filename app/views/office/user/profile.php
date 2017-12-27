@@ -9,7 +9,7 @@
          <label>Email: </label>
             <?=$data['email']?><br />
         <label>User Name: </label>
-            <?=$data['username']?><br />
+            <?=$data['name']?><br />
 
          <label>Phone: </label><?=$data['phone']?><br />
 

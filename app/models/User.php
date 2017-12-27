@@ -37,7 +37,7 @@ class User extends Model
     }
 
     public static $roleMap = [
-        "user" => "user",
+        "user" => "user/index",
         "office_manager"=>"admin",
         "vendor_manager"=>"vendor",
         "superadmin"=>"superadmin"
@@ -45,6 +45,7 @@ class User extends Model
 
     public function logMeIn(){
         $_SESSION['email'] = $this->data["email"];
+        $_SESSION['name'] = $this->data["name"];
         $_SESSION['userid']=$this->getId();
         $_SESSION['role']=$this->getRole();
         redirect(self::$roleMap[$this->getRole()]);

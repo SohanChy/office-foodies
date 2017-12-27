@@ -24,7 +24,7 @@ class userController extends Controller
         $mostpopular="Singara";
 
 
-        $this->view('office/user/today',["lunchrank"=>$lunchrank,"mostpopular"=>$mostpopular,"username"=>$_SESSION['username']]);
+        $this->view('office/user/today',["lunchrank"=>$lunchrank,"mostpopular"=>$mostpopular]);
     }
 
 
@@ -35,7 +35,7 @@ class userController extends Controller
 
 
         $approvedmenu=['pizza','singara','Biriyani','Fuska'];
-        $this->view('office/user/suggest',['approvedmenu'=>$approvedmenu,"username"=>$_SESSION['username']]);
+        $this->view('office/user/suggest',['approvedmenu'=>$approvedmenu]);
 
     }
 
@@ -70,7 +70,7 @@ class userController extends Controller
             array("Biriyani",20),
             array("Singara",1),
         );
-        $this->view('office/user/popular',["popularfoodlist"=>$popularfoodlist,"username"=>$_SESSION['username']]);
+        $this->view('office/user/popular',["popularfoodlist"=>$popularfoodlist]);
     }
 
 
@@ -91,7 +91,7 @@ class userController extends Controller
             echo "this food is already exist in your office";
         }
         */
-       // $this->view('office/user/popular',["username"=>$_SESSION['username']]);
+       // $this->view('office/user/popular',[]);
     }
 
     function myVote()
@@ -109,6 +109,6 @@ class userController extends Controller
             echo "you already votted this food";
         }
         */
-        //$this->view('office/user/popular',["username"=>$_SESSION['username']]);
+        //$this->view('office/user/popular',[]);
     }
 }
