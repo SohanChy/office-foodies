@@ -18,6 +18,7 @@ session_start();
 
      function popular()
      {
+         $popular
          $this->view('office/admin/popular');
      }
 
@@ -44,6 +45,23 @@ session_start();
      function history()
      {
          $this->view('office/admin/history');
+     }
+
+     function addUser()
+     {
+         $useremail=$_REQUEST['useremail'];
+
+         if($this->validateEmail($useremail))
+         {
+             //$this->addUser($useremail);
+             echo "user email is: ".$useremail;
+         }
+         else
+         {
+             echo "invalid user email";
+         }
+
+         //$this->view('office/admin/history');
      }
 
  }

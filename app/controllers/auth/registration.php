@@ -38,7 +38,8 @@ class registration extends Controller
 */
         if($this->validateName($name) && $this->validateEmail($email) && $this->validateUserName($username) && $this->validatePassword($password) && ($password==$confirmpassword) )
        {
-               //save to database password will encrypted
+               //save to database password should be encrypted
+               // $this->save
                header('Location: '.'user');
 
        }

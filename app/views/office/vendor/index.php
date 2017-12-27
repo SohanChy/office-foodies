@@ -16,7 +16,9 @@
           echo "<td><a href='#'>$list[0]</a></td>";
           echo "<td>$list[1]</td>";
           echo "<td>$list[2]</td>";
-          echo "<td><a href='#'>Take this order</a></td>";
+          echo "<form action='takeorder'>
+                  <td><input type='submit' name='$list[3]'></td>
+                </form>";
           echo "</tr>";
       }
     ?>
