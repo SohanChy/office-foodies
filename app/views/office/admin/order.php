@@ -2,9 +2,10 @@
 
 
 
-<form action="">
-  <input type="radio" name="gender" value="male"> Bkash  - Ref ID: <input> <br><br/>
-  <input type="radio" name="gender" value="other"> Pay On Delivery<br/>
+<form action="finalorder">
+  <input type="hidden" name="bid_id" value="<?=$data['bidId']?>">
+  <input type="radio" name="method" value="bkash"> Bkash  - Ref ID: <input name="bkash"> <br><br/>
+  <input type="radio" name="method" value="pod"> Pay On Delivery<br/>
   <br/>
   <button> Order </button>
 

@@ -1,67 +1,45 @@
 <?php include("header.html") ?>
 
+<?php
 
-Order "Kacchi Biriyani" - 120 Packets.
-<table border="0" cellspacing="0" cellpadding="0">
+foreach($data["orders"] as $order){
+    echo "Order <b>{$order->food()->data["name"]}</b> - {$order->data["packets"]} Packets.";
+
+    $bids = $order->bids();
+
+    if(count($bids) > 0){
+        echo "<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
  	<tr>
 		 <th>Vendor</th>
 		 <th>Bid Amount</th>
 		 <th>Action</th>
- 	</tr>
- 	<tr>
-		 <td>Rahim Foods</td>
-		 <td>6000 BDT</td>
+ 	</tr>";
+
+        foreach($bids as $bid){
+            if($bid instanceof Bid){
+                echo "<tr>
+		 <td>{$bid->vendor()->data["name"]}</td>
+		 <td>{$bid->data['bid_amount']} BDT</td>
 		 <td>
 			 
-		 <form action="order.php"><form action="order.php"><button>Order</button></form></form>
+		 <form action=\"order\">
+		 <input type='hidden' name='bid_id' value='{$bid->getId()}'>
+		 <button>Order</button></form>
 		
 		</td>
-		 </td>
-	 </tr>
-	 <tr>
-		 <td>Rahim Foods</td>
-		 <td>6000 BDT</td>
-		 <td><form action="order.php"><button>Order</button></form></td>
-		 </td>
-	 </tr>
-	 <tr>
-		 <td>Rahim Foods</td>
-		 <td>6000 BDT</td>
-		 <td><form action="order.php"><button>Order</button></form></td>
-		 </td>
- 	</tr>
+	    </tr>";
+            }
+            else {
+                echo "<td colspan='3'>No Bids Yet</td>";
+            }
+        }
 
- </table>
+        echo "</table><br />";
+    }
 
-<br />
+}
 
- Order "Mutton Biriyani" - 60 Packets.
-<table border="0" cellspacing="0" cellpadding="0">
- 	<tr>
-		 <th>Vendor</th>
-		 <th>Bid Amount</th>
-		 <th>Action</th>
- 	</tr>
- 	<tr>
-		 <td>Rahim Foods</td>
-		 <td>6000 BDT</td>
-		 <td><form action="order.php"><button>Order</button></form></td>
-		 </td>
-	 </tr>
-	 <tr>
-		 <td>Rahim Foods</td>
-		 <td>6000 BDT</td>
-		 <td><form action="order.php"><button>Order</button></form></td>
-		 </td>
-	 </tr>
-	 <tr>
-		 <td>Rahim Foods</td>
-		 <td>6000 BDT</td>
-		 <td><form action="order.php"><button>Order</button></form></td>
-		 </td>
- 	</tr>
+?>
 
- </table>
-</td>
 
 <?php include("footer.html") ?>

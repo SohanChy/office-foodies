@@ -13,4 +13,14 @@ class Office extends Model
         return User::find($this->data["manager_id"]);
     }
 
+
+    public function employees(){
+
+        $tn = User::tableName();
+
+        $sql = "SELECT * FROM {$tn} where office_id = {$this->getId()}";
+
+        return User::getCollection($sql);
+    }
+
 }

@@ -2,6 +2,13 @@
 session_start();
 class userController extends Controller
 {
+    function __construct() {
+        if($_SESSION["user"]->getRole() != "user"){
+            $_SESSION["error"] = "You are not a user, you can not access that!";
+            redirect("/login");
+        }
+    }
+
     function showIndex()
     {
         header('Location: '.'user/index');

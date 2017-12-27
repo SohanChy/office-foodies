@@ -135,6 +135,12 @@ class App extends Controller
             "admin/order" => array(
                 "controllerPath" => "admin", "controller" => "adminController", "method" => "order", "data" => []
             ),
+            "admin/placeorder" => array(
+                "controllerPath" => "admin", "controller" => "adminController", "method" => "placeorder", "data" => []
+            ),
+            "admin/finalorder" => array(
+                "controllerPath" => "admin", "controller" => "adminController", "method" => "finalorder", "data" => []
+            ),
             "admin/popular" => array(
                 "controllerPath" => "admin", "controller" => "adminController", "method" => "popular", "data" => []
             ),
@@ -143,6 +149,9 @@ class App extends Controller
             ),
             "admin/adduser" => array(
                 "controllerPath" => "admin", "controller" => "adminController", "method" => "addUser", "data" => []
+            ),
+            "admin/employees" => array(
+                "controllerPath" => "admin", "controller" => "adminController", "method" => "employees", "data" => []
             ),
             "admin/admin" => array(
                 "controllerPath" => "admin", "controller" => "adminController", "method" => "admin", "data" => []

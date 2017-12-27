@@ -8,17 +8,15 @@
 
 <table border="0" cellspacing="0" cellpadding="0">
  	<tr>
-		 <th>Date</th>
-		 <th>Order</th>
-		 <th>Amount</th>
+		 <th>Name</th>
+		 <th>Email</th>
  	</tr>
     <?php
 
-    foreach($data["history"] as $his){
+    foreach($data["users"] as $user){
         echo "<tr>
-		<td>{$his["date"]}</td>
-		 <td>{$his['foodName']}</td>
-		 <td>{$his['amount']} BDT</td>
+		<td>{$user->data["name"]}</td>
+		 <td>{$user->data['email']}</td>
 		 </td>
  	      </tr>";
     }

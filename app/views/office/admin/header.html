@@ -18,7 +18,7 @@
 <td colspan="1">
 <h3> Logout </h3>
 
-<h4> Logged in as <?=$_SESSION['name']?> (Office Admin) </h4>
+<h4> Logged in as <?=$_SESSION['managedOffice']->data["name"]?> (Office Admin) </h4>
 </td>
 
 </tr>
@@ -30,6 +30,7 @@
 
 <ul>
 <li> <a href="add_user_office">Add User to Office</a> </li>
+<li> <a href="employees">Employees</a> </li>
 <li> <a href="popular"> Todays Ranks</a> </li>
 <li> <a href="bids"> Bids on My Orders</a> </li>
 <li> <a href="history"> Order History</a> </li>

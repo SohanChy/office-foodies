@@ -37,14 +37,8 @@ class login extends Controller
 
     function logout()
     {
-        echo "hello\n";
-        echo "destroyed: ".$_SESSION['username'];
         session_unset();
         session_destroy();
-
-        //session_destroy();
-        echo "session destroyed: ";
-        //header('Location: '.'/home');
-
+        redirect("");
     }
 }

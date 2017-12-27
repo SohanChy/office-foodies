@@ -11,6 +11,14 @@ class Bid extends Model
         return "order_bid";
     }
 
+    public function order(){
+        return Order::find($this->data["order_id"]);
+    }
+
+    public function vendor(){
+        return Vendor::find($this->data["vendor_id"]);
+    }
+
     public static $status = ["undecided","won","lost"];
 
 }

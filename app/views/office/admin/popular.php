@@ -15,34 +15,21 @@
     <th>Info</th>
     <th>Order</th>
   </tr>
-  <tr>
-    <td>1 </td>
-    <td>Pizza</td>
-    <td>Chosen 12 times</td>
-    <td><input placeholder="Packets Amount"/><button>Order</button></td>
-  </tr>
- 
- <tr>
-    <td>2 </td>
-    <td>Chicken Biriyani</td>
-    <td>Chosen 7 times</td> 
-    <td><input placeholder="Packets Amount"/><button>Order</button></td>
-  </tr>
-  
-    <tr>
-    <td>3 </td>
-    <td>Kacchi Biriyani</td>
-    <td>Chosen 5 times</td> 
-    <td><input placeholder="Packets Amount"/><button>Order</button></td>
-  </tr>
-  
-  
-    <tr>
-    <td>4</td>
-    <td>Burger</td>
-    <td>Chosen 3 times</td> 
-    <td><input placeholder="Packets Amount"/><button>Order</button></td>
-  </tr>
+    <?php
+    $i = 1;
+    foreach ($data['lunchRankList'] as $item)
+    {
+        echo "<tr>";
+        echo "<td>".$i++."</td>";
+        echo "<td>{$item['foodName']}</td>";
+        echo "<td>Chosen {$item['votes']} Times</td>";
+        echo "<td><form action='placeorder'>
+                  <input name='packets' placeholder=\"Packets Amount\"/>
+                  <input type='hidden' value='{$item['foodId']}' name='foodId'> <button>Order</button></td>
+                </form>";
+        echo "</tr>";
+    }
+    ?>
 
 </table>
 

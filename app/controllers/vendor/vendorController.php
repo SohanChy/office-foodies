@@ -4,6 +4,13 @@ session_start();
 class vendorController extends Controller
 {
 
+    function __construct() {
+        if($_SESSION["user"]->getRole() != "vendor_manager"){
+            $_SESSION["error"] = "You are not a vendor admin, you can not access that!";
+            redirect("/login");
+        }
+    }
+
     function showIndex()
     {
         header('Location: ' . 'vendor/index');
