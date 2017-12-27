@@ -13,6 +13,20 @@ class User extends Model
         "user","office_manager","vendor_manager","superadmin"
     ];
 
+
+//    PHP >= 5.5
+    public function setPassword($password){
+        $this->data["password"] = password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    public function verifyPassword($password){
+        if (password_verify($password, $this->data["password"])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getRole(){
         return $this->data["role"];
     }
