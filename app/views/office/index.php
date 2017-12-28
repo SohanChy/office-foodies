@@ -2,7 +2,7 @@
 include("header.html") ?>
 
 <h2> Welcome To Office Foodies </h2> 
-<h4> Food for your workplace!</h4>
+<h4> Food for your workplace, Hassle free!</h4>
 <h4> Popular Menus Today: </h4>
 <table border="1">
   <tr>
@@ -11,31 +11,19 @@ include("header.html") ?>
 
 
   </tr>
+    <?php
 
-  <tr>
-    <td>Pizza</td>
-    <td> <?=$data["price"]?> </td>
+  foreach($data["listing"] as $list){
+      echo "  <tr>
+    <td>{$list['foodName']}</td>
+    <td> {$list['eatnum']} </td>
 
-  </tr>
- 
-  <tr>
-    <td>Chicken Biriyani</td>
-    <td> 8 </td>
+  </tr>";
+  }
 
-  </tr>
-  
-  <tr>
-    <td>Kacchi Biriyani</td>
-    <td> 5 </td>
 
-  </tr>
-  
-  
-    <tr>
-    <td>Burger</td>
-    <td>4</td>
+    ?>
 
-  </tr>
 
 </table>
 

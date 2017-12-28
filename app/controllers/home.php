@@ -11,9 +11,16 @@ class home extends Controller {
 
     function index()
     {
+        $sql = "SELECT foodlist.name as foodName, count(orders.office_id) as eatnum
+from orders
+  inner join foodlist on foodlist.id = orders.food_id
+group by orders.food_id order by eatnum desc Limit 10;";
+        $results = Connection::getQuery($sql);
+
+
         $this->view('office/index',
             [
-            'price'=>500
+            'listing'=>$results
             ]
         );
     }
