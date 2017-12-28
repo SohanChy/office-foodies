@@ -16,12 +16,12 @@
 
     <?php
       $rank=1;
-      foreach ($data['popularfoodlist'] as $item)
+      foreach ($data['popularList'] as $item)
     {
         echo "<tr>";
         echo "<td>$rank</td>";
-        echo "<td>$item[0]</td>";
-        echo "<td>chosen $item[1] times</td>";
+        echo "<td>{$item['foodName']}</td>";
+        echo "<td>chosen {$item['votes']} times</td>";
         echo "</tr>";
 
         $rank++;

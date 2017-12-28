@@ -77,35 +77,16 @@ order by lunchrank.votes desc";
 
     function popular()
     {
+        $sql = "select lunchrank.votes as votes, lunchrank.id as lunchRankId , foodlist.name as foodName
+from lunchrank
+inner join foodlist
+  on foodlist.id = lunchrank.food_id
+where lunchrank.office_id = {$_SESSION['user']->data['office_id']}
+order by lunchrank.votes desc limit 5";
 
-        $date=date('Y-m');
+        $results = Connection::getQuery($sql);
 
-        if(isset($_REQUEST['date']))
-        {
-            $date=$_REQUEST['date'];
-
-        }
-        $date=explode('-',$date);
-        $year=$date[0];
-        $month=$date[1];
-
-        //echo $date;
-        echo "month is: ".$month."\n";
-        echo "year is: ".$year."\n";
-        /*
-               // var_dump($_REQUEST);
-         */
-
-
-      //  $popularfoodlist=$this->getPopularFoodList($month,$year);
-        $popularfoodlist=array(
-            array("pizza",12),
-            array("Fuska",18),
-            array("Nachos",2),
-            array("Biriyani",20),
-            array("Singara",1),
-        );
-        $this->view('office/user/popular',["popularfoodlist"=>$popularfoodlist]);
+        $this->view('office/user/popular',["popularList"=>$results]);
     }
 
 
