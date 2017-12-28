@@ -5,22 +5,15 @@
     <label>From Approved Menu</label>
     <select name="menu">
         <?php
-          foreach ($data['approvedmenu'] as $menu)
-              echo "<option value='$menu'>$menu</option>";
+          foreach ($data['fList'] as $food)
+              echo "<option value='{$food->getId()}'>{$food->data['name']}</option>";
         ?>
     </select>
 
     <br>
-    <input type="submit" value="submit">
+    <br>
+    <button>Suggest</button>
 </form>
 <br><br>
-
-<label>Suggest a new item for approval</label>
-<form action="mynewsuggestion">
-    <input type="text" name="mysuggestedfood">
-    <br>
-    <input type="submit" value="submit">
-    </form>
-</td>
 
 <?php include("footer.html") ?>

@@ -1,9 +1,9 @@
 <?php include("header.html") ?>
 
-<h2 id="suggest"><?=$data['mostpopular']?> is most popular,
+<h2 id="suggest"><?=$data['lunchRank'][0]['foodName']?> is most popular,
   Vote that today too?
   <br/>
-  <a id="yesbtn" href=""> Yes </a>  ///use javascript
+  <a id="yesbtn" href=""> Yes </a>
 </h2>
 
 
@@ -16,12 +16,15 @@
         <th>Suggested By</th>
     </tr>
     <?php
-      foreach ($data['lunchrank'] as $item)
+      $i = 1;
+      foreach ($data['lunchRank'] as $item)
       {
           echo "<tr>";
-          echo '<td>'.$item[0].'<a href="#">&uarr;</a></td>';
-          echo '<td>'.$item[1].'</td>';
-          echo '<td>'.$item[2].'</td>';
+          echo '<td>'.$i++.
+              "<a href='vote?lr={$item['lunchRankId']}'>&uarr;</a>
+                ({$item['votes']})</td>";
+          echo '<td>'.$item['foodName'].'</td>';
+          echo '<td>'.$item['suggesterName'].'</td>';
           echo "<tr>";
       }
 
