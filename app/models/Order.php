@@ -7,11 +7,6 @@
 
 class Order extends Model
 {
-    function __construct() {
-        parent::__construct();
-        $this->data["date"] = date("Y-m-d");
-    }
-
     public static function tableName(){
         return "orders";
     }
