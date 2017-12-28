@@ -3,6 +3,11 @@ session_start();
  class adminController extends Controller
  {
      function __construct() {
+
+         if(!isset($_SESSION["user"])){
+             redirect("/login");
+         }
+
          if($_SESSION["user"]->getRole() != "office_manager"){
              $_SESSION["error"] = "You are not a office admin, you can not access that!";
              redirect("/login");

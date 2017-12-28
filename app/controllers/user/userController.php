@@ -3,6 +3,9 @@ session_start();
 class userController extends Controller
 {
     function __construct() {
+        if(!isset($_SESSION["user"])){
+            redirect("/login");
+        }
         if($_SESSION["user"]->getRole() != "user"){
             $_SESSION["error"] = "You are not a user, you can not access that!";
             redirect("/login");
@@ -14,24 +17,51 @@ class userController extends Controller
         header('Location: '.'user/index');
     }
 
+    function vote()
+    {
+        $Rid = $_REQUEST["lr"];
+        $LR = LunchRank::find($Rid);
+        $vtoday = $_SESSION["user"]->data["voted_today"];
+
+        if($LR->getId() != $vtoday){
+            $LR->data["votes"] = intval($LR->data["votes"]) + 1;
+
+            $oldLR = LunchRank::find($vtoday);
+            if($oldLR){
+                $oldLR->data["votes"] = intval($LR->data["votes"]) - 1;
+                $oldLR->save();
+            }
+
+            $_SESSION["user"]->data["voted_today"] = $LR->getId();
+        }
+        else {
+            $LR->data["votes"] = intval($LR->data["votes"]) - 1;
+            $_SESSION["user"]->data["voted_today"] = null;
+        }
+
+        $_SESSION["user"]->save();
+        $_SESSION["user"]= $_SESSION["user"];
+
+        $LR->save();
+        redirect("user/index");
+
+    }
+
 
     function index()
     {
+        $sql = "select lunchrank.votes as votes, lunchrank.id as lunchRankId , foodlist.name as foodName, users.name as suggesterName
+from lunchrank
+inner join foodlist
+  on foodlist.id = lunchrank.food_id
+inner join users
+  on users.id = lunchrank.suggester_id
+where lunchrank.office_id = {$_SESSION['user']->data['office_id']}
+order by lunchrank.votes desc";
 
-        $lunchrank= array
-            (
-                array("1","Chicken chap","Afif"),
-                array("3","Chicken Briyani","habib"),
-                array("2","nachos","Sohan"),
-                array("4","pizza","Abrar"),
-                array("7","Singara","Tonmoy"),
+        $results = Connection::getQuery($sql);
 
-            );
-
-        $mostpopular="Singara";
-
-
-        $this->view('office/user/today',["lunchrank"=>$lunchrank,"mostpopular"=>$mostpopular]);
+        $this->view('office/user/today',["lunchRank"=>$results]);
     }
 
 
@@ -39,10 +69,8 @@ class userController extends Controller
 
     function suggestion()
     {
-
-
-        $approvedmenu=['pizza','singara','Biriyani','Fuska'];
-        $this->view('office/user/suggest',['approvedmenu'=>$approvedmenu]);
+        $foodList = FoodList::getAll();
+        $this->view('office/user/suggest',['fList'=>$foodList]);
 
     }
 
@@ -103,19 +131,17 @@ class userController extends Controller
 
     function myVote()
     {
-        $myvottedfood=$_REQUEST['menu'];
-        echo $myvottedfood;
-        ///
-        /*
-        if(!$this->isVotted($myvottedfood))
-        {
-            $this->voteFood($myvottedfood);
-        }
-        else
-        {
-            echo "you already votted this food";
-        }
-        */
-        //$this->view('office/user/popular',[]);
+        $id = $_REQUEST['menu'];
+
+        $lr = new LunchRank();
+        $lr->data["food_id"] = $id;
+        $lr->data["office_id"] = $_SESSION["user"]->data["office_id"];
+        $lr->data["votes"] = 0;
+        $lr->data["suggester_id"] = $_SESSION["user"]->getId();
+        $lr->data["date"] = date("D M Y");
+
+        $lr->save();
+
+        redirect("user/index");
     }
 }
