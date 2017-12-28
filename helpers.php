@@ -16,5 +16,9 @@ function redirect($path){
     die();
 }
 
+function logOutLink(){
+    return BASE_URL."/user/logout";
+}
+
 
 ?>

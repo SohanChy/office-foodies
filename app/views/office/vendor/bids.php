@@ -1,6 +1,6 @@
 <?php include("header.html") ?>
 
-<h1> Open Food Orders </h1>
+<h1> My Bids </h1>
 <table border="0" cellspacing="0" cellpadding="0">
  	<tr>
 		 <th>Company Name</th>
