@@ -10,6 +10,13 @@ var aList = document.querySelectorAll('a');
 for(let i = 0; i < aList.length; i++){
     aList[i].style.textDecoration = "none";
     aList[i].style.color = "#2980b9";
+    // aList[i].style.color = "#2980b9";
+}
+
+var aList = document.querySelectorAll('td > a > h3');
+for(let i = 0; i < aList.length; i++){
+    aList[i].style.textDecoration = "none";
+    aList[i].style.color = "white";
 }
 
 var btnList = document.querySelectorAll('button,input, select');
@@ -86,6 +93,7 @@ if(elem){
     elem.style.backgroundColor ="#F2DEDE";
     elem.style.padding ="10px";
 }
+
 
 
 

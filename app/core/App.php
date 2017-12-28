@@ -64,6 +64,9 @@ class App extends Controller
             "user/popular" => array (
                 "controllerPath"=>"user","controller"=>"userController","method"=>"popular","data"=>[]
             ),
+            "user/vote" => array (
+                "controllerPath"=>"user","controller"=>"userController","method"=>"vote","data"=>[]
+            ),
             "user/myvote" => array (
                 "controllerPath"=>"user","controller"=>"userController","method"=>"myVote","data"=>[]
             ),
